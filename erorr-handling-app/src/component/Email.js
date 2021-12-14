@@ -7,6 +7,7 @@ const Email = ()=>
         const [isValid, setIsValid] = useState(false);
         const [message, setMessage] = useState();
         const [icons, setIcons] = useState();
+        const [border,setBorder]= useState()
 
 
         const emailRegex = /\S+@\S+\.\S+/;
@@ -18,6 +19,7 @@ const Email = ()=>
                 setIsValid(true);
                 setMessage(<span style={{color:'green'}}>Your Email Is Valid</span>)
                 setIcons(<i class="fas fa-check-circle" ></i>);
+                setBorder('green')
                 
             }
             else
@@ -25,6 +27,7 @@ const Email = ()=>
                 setIsValid(false);
                 setMessage('Your Email Is Not Valid')
                 setIcons(<i class="fas fa-exclamation-circle"></i>);
+                setBorder('red')
             }
   };
 
@@ -42,7 +45,9 @@ const Email = ()=>
 
                     <div className="card1">
                         <h2>Email Id</h2>
-                        <input type='text' className='input' placeholder="Enter your email" onChange={validateEmail}></input>
+                        <input type='text' className='input' placeholder="Enter your email" onChange={validateEmail}
+                        style={{border:`4px solid ${border}`}}
+                        ></input>
                         
                         <p>{icons}{message}</p>
                     </div>
